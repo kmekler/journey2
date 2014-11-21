@@ -2,11 +2,29 @@
 <html>
 <head>
   <title>Journey</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Library</a></li>
+     </ul> 
+    </div> 
+    <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Profile <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Settings</a></li>
+              <li class="divider"></li>
+            </ul>
+    </li>
+  </nav>
+
     <div id="container">
         <div id="user_header">
 	    <% if current_user %>
