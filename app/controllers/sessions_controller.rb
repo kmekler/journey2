@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-
+    skip_before_filter :authorize
     def new
     end
 
@@ -23,6 +23,6 @@ class SessionsController < ApplicationController
     def destroy
         # Kill our cookies!
         reset_session
-        redirect_to root_path, notice: "Logged out!"
+        redirect_to users_path, notice: "Logged out!"
     end
 end

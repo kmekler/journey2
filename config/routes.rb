@@ -1,10 +1,11 @@
 Journey2::Application.routes.draw do
 
 get 'logout', to: 'sessions#destroy', as: 'logout'  
+resources :journals
 resources :sessions
 resources :users
 
-root 'users#index'
+root 'journals#index'
 end
 
   # The priority is based upon order of creation: first created -> highest priority.

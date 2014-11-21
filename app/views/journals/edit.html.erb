@@ -1,0 +1,18 @@
+<body class="background">
+	<div class="body">
+	<h1 class="heading">Edit your entry</h1>
+		<div class="text">
+			<%= form_for @journal do |f| %>
+				Weather: <br><%= f.select :weather, [['horrible', 1], ['poor', 2], ['mediocre', 3], ['good', 4], ['great', 5]] %><br><br>
+				Food: <br><%= f.select :food, [['horrible', 1], ['poor', 2], ['mediocre', 3], ['good', 4], ['great', 5]] %><br><br>
+				Mood: <br><%= f.select :mood, [['horrible', 1], ['poor', 2], ['mediocre', 3], ['good', 4], ['great', 5]] %><br><br>
+				Comment: <br><%= f.text_field :comment %><br><br>
+				
+			<%= f.submit "Save journal!" %><br><br>
+
+			<%= link_to "Back to the list!", journals_path %>
+			
+			<% end %>	
+		</div>
+	</div>	
+</body>	

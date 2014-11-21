@@ -1,0 +1,19 @@
+<body class="background">
+	<div class="body">
+		<center><div class="text">
+
+			<br><br>
+			<strong>Weather:</strong> <br><br><%= @journal.weather %> <br><br>
+			<strong>Food:</strong> <br><br><%= @journal.food %> <br><br>
+			<strong>Mood:</strong> <br><br><%= @journal.mood %><br><br>
+			<strong>Comment:</strong> <br><br><%= @journal.comment %> <br><br>
+			
+			<br><br>
+			<div class = "links">
+        		<center><%= link_to 'Edit this journal', edit_journal_path %></center>
+        		<center><%= link_to 'Delete this journal', @journal, method: :delete, data: { confirm: 'Are you sure?' } %></center>
+				<center><%= link_to "Back to the list", journals_path %><center>
+			</div>
+		</div></center>	
+	</div>	
+</body>	
