@@ -1,0 +1,16 @@
+<body class="background">
+	<div class="body">
+		<div class="text">
+				<center><h2 class="heading"> JESUS CHRIST, RUN ALREADY </h2><br></center>		
+
+					<% @journals.each do |journal| %>
+					<center><p class="hover"><%= journal.weather %></p><center>
+					<center><p><%= link_to 'See more', journal_path(journal) %></p></center>
+				<% end %>
+				<% if @back == 1 %>
+			       <%= link_to 'Back', journals_path %>
+			    <% end %>
+		</div>
+	</div>	
+</body>	
+
