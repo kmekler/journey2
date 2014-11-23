@@ -44,6 +44,13 @@ group :development do
 	gem 'binding_of_caller'
 
 end
+
+group :production do
+
+  #gem for heroku to handle assets
+  gem 'rails_12factor', '0.0.2'
+
+end
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
