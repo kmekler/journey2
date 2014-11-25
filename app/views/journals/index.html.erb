@@ -69,6 +69,27 @@
           );
         }
     </script>
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+      var data = google.visualization.arrayToDataTable([
+        ['Date', 'Mood', 'Weather', 'Food'],
+        ['11/23/2014', 4, 2, 9]
+      ]);
+
+      var options = {
+        title: 'Run Performance',
+        hAxis: {title: 'Date', titleTextStyle: {color: 'red'}}
+      };
+
+      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
   </head>
   <body class="background">
     <div>
@@ -93,6 +114,38 @@
 			    <% end %>
 		</div>
 	</div>	
+
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="width:900px; background-color:black;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Your Day</h4>
+      </div>
+      <div class="modal-body">
+        
+      <div class="row">
+        <div class="col-md-6"><h1>Journal Entry</h1>
+          <p>I felt really strong today. Had a light breakfast and a clif bar about 30 minutes before my run. I clocked about 5 miles at a 6:45 mile pace. I did not feel tired after the run and my legs felt well rested.</p>
+        </div>
+        <div class="col-md-6">
+          <div id="chart_div"></div>
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
   </body>
 </html>
