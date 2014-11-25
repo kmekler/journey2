@@ -1,5 +1,5 @@
 class JournalsController < ApplicationController
-
+skip_before_filter :authorize
 def index
 	
 	if params[:weather]

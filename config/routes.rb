@@ -5,7 +5,7 @@ resources :journals
 resources :sessions
 resources :users
 
-root 'journals#index'
+root 'users#index'
 end
 
   # The priority is based upon order of creation: first created -> highest priority.

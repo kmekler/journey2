@@ -1,3 +1,28 @@
 // Place all the styles related to the journals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.modal-header {
+   background: black;
+   border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
+}
+
+.modal-title {
+   color: white;
+   border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
+}
+.modal-body {
+	background: black;
+}
+
+.row {
+	color: white;
+}
+
+#chart_div {
+   margin-top: 20px;
+	width: 100%;
+	height: 300px;
+}
