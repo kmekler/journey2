@@ -2,6 +2,12 @@
 <html>
   <head>
 
+    <%= @markers %>
+    <table>
+
+
+      </table>
+
     <title>Remove Markers</title>
     <style>
       html, body, #map-canvas {
@@ -31,6 +37,8 @@ var markers = [];
 var infowindows = [];
 
 function initialize() {
+
+
   geocoder = new google.maps.Geocoder();
   var genAssembly = new google.maps.LatLng(34.012982, -118.495186);
   var mapOptions = {
@@ -92,12 +100,20 @@ function addMarker(location) {
  
   $(document).ready(function(){
         $("#marker_field").val(markers);
+
+
   });
 
   // make an api call to your server and send markers back
   $.post("/markers", {lat: marker.position.lat(), lng: marker.position.lng()},
      function(data){
       console.log(data);
+     });
+
+       // make an api call to your server and send markers back
+  $.get("/markers", {lat: marker.position.lat(), lng: marker.position.lng()},
+     function(data){
+      markers = data;
      });
 }
 
