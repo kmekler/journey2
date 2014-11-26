@@ -1,7 +1,8 @@
 class JournalsController < ApplicationController
 skip_before_filter :authorize
 def index
-	
+	# @markers = Marker.all
+	@markers = current_user.markers.all
 	if params[:weather]
 	  @journals = Journal.where(:'weather' => params[:weather]) 
 
