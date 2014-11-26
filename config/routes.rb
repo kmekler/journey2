@@ -1,9 +1,11 @@
 Journey2::Application.routes.draw do
 
 get 'logout', to: 'sessions#destroy', as: 'logout'  
+# post '/markers' => 'markers#create'
 resources :journals
 resources :sessions
 resources :users
+resources :markers
 
 root 'users#index'
 end
