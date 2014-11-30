@@ -1,6 +1,27 @@
 // Place all the styles related to the journals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.body-show-journal {
+   background: black;
+}
+
+.show-journal-comment {
+   color: white;
+   width: 350px;
+   margin-top: 4%;
+   margin-bottom: 70px;
+   margin-left: 140px;
+}
+
+.body-show-title {
+   text-align: center;
+}
+
+.show-journal-button {
+   text-align: center;
+   padding: 10px;
+}
+
 
 .modal-header {
    background: black;
@@ -21,8 +42,31 @@
 	color: white;
 }
 
+.btn-default {
+
+}
 #chart_div {
    margin-top: 20px;
-	width: 100%;
+	width: 50%;
 	height: 300px;
+   float: right;
+   margin-right: 10%;
+}
+
+#panel {
+   top: 8px;
+   padding: 5px;
+   float:right;
+   width: 150px;
+   height: 300px;
+   padding: 10px;
+}
+
+html, body, #map-canvas { 
+  height: 80%;
+}
+
+#map-canvas {
+   width: 80%;
+   margin-left: 40px;
 }

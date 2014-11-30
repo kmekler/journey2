@@ -1,86 +1,60 @@
 <!DOCTYPE html>
 <html>
-  <head>
-
-    
-    <table>
-
-
-      </table>
-
-    <title>Remove Markers</title>
+  <head>    
     <style>
       html, body, #map-canvas {
         
         height: 80%;
-        
         margin: 0px;
-        padding: 0px
-      }
-      #panel {
-        position: absolute;
-        top: 8px;
-        left: 50%;
-        margin-left: -320px;
-        z-index: 5;
-        background-color: #fff;
-        padding: 5px;
-        border: 1px solid #999;
+        padding: 0px;
       }
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script>
-// In the following example, markers appear when the user clicks on the map.
-// The markers are stored in an array.
-// The user can then click an option to hide, show or delete the markers.
-var geocoder;
-var map;
-var markers = [];
-var infowindows = [];
-
-function initialize() {
-
-
-  geocoder = new google.maps.Geocoder();
-  var genAssembly = new google.maps.LatLng(34.012982, -118.495186);
-  var mapOptions = {
-    zoom: 12,
-    center: genAssembly,
-    mapTypeId: google.maps.MapTypeId.TERRAIN
-  };
-  map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
-
-
-
-  // This event listener will call addMarker() when the map is clicked.
-  google.maps.event.addListener(map, 'click', function(event) {
-    addMarker(event.latLng);
-  });
-
-  // Adds a marker at the center of the map.
-  addmarker = new google.maps.Marker({
-            position: genAssembly,
-            map: map
-   });
-
-  
-      var markers  = <%= @markers.to_json.html_safe %>;
-      
-      console.log(markers);
-      
-      for (var i = 0; i < markers.length; i++) {
-          //Add to marker
-          var marker = new google.maps.LatLng(markers[i].latitude,markers[i].longitude);
-          
-         
-         
-          addmarker = new google.maps.Marker({
-            position: marker,
-            map: map
-          });
-      }
     
+    // In the following example, markers appear when the user clicks on the map.
+    // The markers are stored in an array.
+    // The user can then click an option to hide, show or delete the markers.
+    var geocoder;
+    var map;
+    var markers = [];
+    var infowindows = [];
+
+    function initialize() {
+
+    geocoder = new google.maps.Geocoder();
+    var genAssembly = new google.maps.LatLng(34.012982, -118.495186);
+    var mapOptions = {
+      zoom: 12,
+      center: genAssembly,
+      mapTypeId: google.maps.MapTypeId.TERRAIN
+    };
+    map = new google.maps.Map(document.getElementById('map-canvas'),
+        mapOptions);
+
+    // This event listener will call addMarker() when the map is clicked.
+    google.maps.event.addListener(map, 'click', function(event) {
+      addMarker(event.latLng);
+    });
+
+    // Adds a marker at the center of the map.
+    addmarker = new google.maps.Marker({
+              position: genAssembly,
+              map: map
+     });
+  
+    var markers  = <%= @markers.to_json.html_safe %>;
+    
+    console.log(markers);
+    
+    for (var i = 0; i < markers.length; i++) {
+        //Add to marker
+        var marker = new google.maps.LatLng(markers[i].latitude,markers[i].longitude);
+        addmarker = new google.maps.Marker({
+          position: marker,
+          map: map
+        });
+    }   
 }
   
 // Add a marker to the map and push to the array.
@@ -141,6 +115,7 @@ function addMarker(location) {
 }
 
 
+
 // Sets the map on all markers in the array.
 function setAllMap(map) {
   for (var i = 0; i < markers.length; i++) {
@@ -191,10 +166,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
     </script>
 
-    
-
-
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    
     <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
@@ -219,78 +192,27 @@ google.maps.event.addDomListener(window, 'load', initialize);
     
   </head>
   <body class="background">
-
+    <h1>Running Locations</h1>
+    <div id="panel">
+      <button onclick="clearMarkers();" value="Hide Markers" >Clear Markers</button><br>
+      <button onclick="showMarkers();" value="Show All Markers">Show Markers</button><br>
+      <button onclick="deleteMarkers();" value="Delete Markers">Delete Markers</button><br>
+    </div>  
     
-
+    <!-- google map div ID -->
     <div id="map-canvas"></div>
 
-
-
-    <div id="panel">
-      <input id="address" type="textbox" value="General Assembly, Santa Monica, CA">
-      <input type="button" value="Search by Location" onclick="codeAddress()">
-      <input onclick="clearMarkers();" type=button value="Hide Markers">
-      <input onclick="showMarkers();" type=button value="Show All Markers">
-      <input onclick="deleteMarkers();" type=button value="Delete Markers">
-
-    </div>
     
-
-
-    <p>Click on the map to add markers.</p>
-
-
-
-
     <%=link_to 'send back', journal_path(:id=>"marker_field") %>
-    
-    
-    
-
     
 	<div class="body">
 		<div class="text">
-				<center><h2 class="heading"> JESUS CHRIST, RUN ALREADY </h2><br></center>		
 
-					<% @journals.each do |journal| %>
-					<center><p class="hover"><%= journal.weather %></p><center>
-					<center><p><%= link_to 'See more', journal_path(journal) %></p></center>
-				<% end %>
-				
+			<% @journals.each do |journal| %>
+				<center><p><%= link_to 'see more', journal_path(journal) %></p></center>
+			<% end %>
 		</div>
 	</div>	
-
-  <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" style="width:900px; background-color:black;">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Your Day</h4>
-      </div>
-      <div class="modal-body">
-        
-      <div class="row">
-        <div class="col-md-6"><h1>Journal Entry</h1>
-          <p>I felt really strong today. Had a light breakfast and a clif bar about 30 minutes before my run. I clocked about 5 miles at a 6:45 mile pace. I did not feel tired after the run and my legs felt well rested.</p>
-        </div>
-        <div class="col-md-6">
-          <div id="chart_div"></div>
-        </div>
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
 
   </body>
 </html>
