@@ -1,19 +1,54 @@
-<body class="background">
-	<div class="body">
-		<center><div class="text">
+<head>
+    
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    
+    google.load("visualization", "1", {packages:["corechart"]});
+	google.setOnLoadCallback(drawChart);
+	
+	function drawChart() {
 
-			<br><br>
-			<strong>Weather:</strong> <br><br><%= @journal.weather %> <br><br>
-			<strong>Food:</strong> <br><br><%= @journal.food %> <br><br>
-			<strong>Mood:</strong> <br><br><%= @journal.mood %><br><br>
-			<strong>Comment:</strong> <br><br><%= @journal.comment %> <br><br>
-			
-			<br><br>
-			<div class = "links">
-        		<center><%= link_to 'Edit this journal', edit_journal_path %></center>
-        		<center><%= link_to 'Delete this journal', @journal, method: :delete, data: { confirm: 'Are you sure?' } %></center>
-				<center><%= link_to "Back to the list", journals_path %><center>
-			</div>
-		</div></center>	
-	</div>	
-</body>	
+	var data = google.visualization.arrayToDataTable([
+	    ['Date', 'Mood', 'Weather', 'Food'],
+	    ['11/23/2014', <%= @journal.weather %>, <%= @journal.food %> , <%= @journal.mood %>],
+	]);
+
+    var options = {
+	    title: 'Run Performance',
+	    hAxis: {title: 'Year', titleTextStyle: {color: 'red'}}
+	};
+
+	var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+
+	    chart.draw(data, options);
+
+	}
+	</script>
+</head>
+
+<body class = "body-show-journal">
+
+	<h1 class = "body-show-title" style="color:white;">Journal Entry</h1>
+	
+	<div id="chart_div" style="width: 500px; height: 300px;"></div>
+
+	<div class='show-journal-comment'>
+		<h1 style="font-size: 25px">Run Comments:</h1>
+		<%= @journal.comment %>
+		<br><br>
+		<h1 style="font-size: 25px">Run Date:</h1>
+		<p>11/23/2014</p>
+	</div>
+
+
+	<br><br>
+	<div class= 'show-journal-button'>
+		<button type="button" class="btn btn-default"><%= link_to 'Edit', edit_journal_path %></button>
+		<button type="button" class="btn btn-default"><%= link_to 'Delete', @journal, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+		<button type="button" class="btn btn-default"><%= link_to 'Back', journals_path %></button>
+	</div>
+</body>
+
+
+
+
