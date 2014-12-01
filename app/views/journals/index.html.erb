@@ -240,6 +240,21 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
     </div>
 
+       <ul class="list-group" style='float:right;'>
+        <% @journals.each do |show| %>
+        <pre class="pre-scrollable">
+       
+          <li class="list-group-item"><%= link_to 'Run details', journal_path(show) %></li>
+          <li class="list-group-item"><%= link_to 'Run details', journal_path(show) %></li>
+          <li class="list-group-item"><%= link_to 'Run details', journal_path(show) %></li>
+           <li class="list-group-item"><%= link_to 'Run details', journal_path(show) %></li>
+          <li class="list-group-item"><%= link_to 'Run details', journal_path(show) %></li>
+          <li class="list-group-item"><%= link_to 'Run details', journal_path(show) %></li>
+
+          <% end %>
+        </pre>
+      </ul>
+
 
     <center><p>Click on the map to add markers.</p></center>
    
@@ -247,16 +262,18 @@ google.maps.event.addDomListener(window, 'load', initialize);
   
 
     
-<div class="logs">
-  <br>
-  <br>
+
+  <!--  <table id="logs" class="table table-striped">
 
     
     <% @journals.each do |show| %>
-          <center><p class="hover"><%= show.comment %></p><center>
-          <center><p><%= link_to 'Run details', journal_path(show) %></p></center>
+    <tr>
+          <td class="hover"><%= show.comment %></td>
+          <td><%= link_to 'Run details', journal_path(show) %></td>
         <% end %>
-      </div>
+      </tr>
+      </table> -->
+     
 
 
 
