@@ -8,7 +8,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav class="navbar navbar-default" role="navigation">
+  <nav class="navbar navbar-inverse" role="navigation">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -26,33 +26,27 @@
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Journal <span class="sr-only">(current)</span></a></li>
           <li><a href="#">Tracker</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">something</a></li>
-              <li><a href="#">something else</a></li>
-              
-            </ul>
-          </li>
         </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            <% if current_user %>
+        Logged in as <%= current_user.email %>
+          <li><button type="button" class="btn btn-default navbar-btn"><a href="#"><%= link_to "Log Out", logout_path %></a></button></li>
+      <% else %>
+          <li><button type="button" class="btn btn-default navbar-btn"><a href="#"><%= link_to "Log In", new_session_path %></a></button></li>
+          <li><button type="button" class="btn btn-default navbar-btn"><a href="#"><%= link_to "Sign Up", new_user_path %></button></li>
+        </ul>
+      <% end %>
+      <% flash.each do |name,msg| %>
+            <%= content_tag :div, msg, id: "flash_#{name}" %>
+        <% end %>
+         
        
        
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
-      <div id="container">
-        <div id="user_header">
-      <% if current_user %>
-        Logged in as <%= current_user.email %>.
-        <%= link_to "Log Out", logout_path %>
-      <% else %>
-        <%= link_to "Sign Up", new_user_path %> or
-        <%= link_to "Log In", new_session_path %>
-      <% end %>
-  </div>
-        <% flash.each do |name,msg| %>
-            <%= content_tag :div, msg, id: "flash_#{name}" %>
-        <% end %>
+  
 
         <%= yield %>
 </body>
