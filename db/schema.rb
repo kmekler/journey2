@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20141126182917) do
   enable_extension "plpgsql"
 
   create_table "journals", force: true do |t|
+    t.string   "location"
     t.integer  "weather"
     t.integer  "food"
     t.integer  "mood"

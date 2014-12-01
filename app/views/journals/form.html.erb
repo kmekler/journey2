@@ -12,6 +12,10 @@
     </div>
   <% end %>
   <div class="field">
+    <%= f.label :location %><br>
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">  
     <%= f.label :weather %>
     <%= f.select :weather, [['horrible', 1], ['poor', 2], ['mediocre', 3], ['good', 4], ['great', 5]] %>
   </div>  

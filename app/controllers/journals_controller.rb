@@ -14,7 +14,7 @@ end
 
 def filter
    
-   redirect_to journals_path(:weather => params[:weather])
+   redirect_to journals_path(:location => params[:location])
 end
 
 def new
@@ -22,7 +22,7 @@ def new
 end
 
 def create
-	@journal = Journal.new(params.require(:journal).permit(:weather, :food, :mood, :comment))
+	@journal = Journal.new(params.require(:journal).permit(:location, :weather, :food, :mood, :comment))
 
 	if @journal.save
 		redirect_to journals_path
@@ -37,7 +37,7 @@ end
 
 def update
 	@journal = Journal.find(params[:id])
-	if @journal.update_attributes(params.require(:journal).permit(:weather, :food, :mood, :comment))
+	if @journal.update_attributes(params.require(:journal).permit(:location, :weather, :food, :mood, :comment))
 		redirect_to journals_path
 	else
 		render 'edit'

@@ -3,6 +3,13 @@
 	<h1 class="heading">Add a journal entry</h1>
 	<br>
 			<%= form_for @journal do |f| %>
+
+				<div>
+					<strong>Location</strong>
+    				<br>
+    				<%= f.text_field :location, type: "text", :class => "form-control new-person-form", placeholder: "Location"%>
+    				<br>
+  				</div>
 				<div class="form-group">
 					<%= f.label :weather %> 
 					  <%= f.select(:weather, options_for_select([['great', 5], ['good', 4], ['mediocre', 3], ['poor', 2], ['horrible', 1]]), {}, {class: "form-control"}) %>
