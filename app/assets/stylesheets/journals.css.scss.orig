@@ -1,0 +1,97 @@
+// Place all the styles related to the journals controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.body-show-journal {
+   background: black;
+}
+
+.show-journal-comment {
+   color: white;
+   width: 350px;
+   margin-top: 4%;
+   margin-bottom: 70px;
+   margin-left: 140px;
+}
+
+.body-show-title {
+   text-align: center;
+}
+
+.show-journal-button {
+   text-align: center;
+   padding: 10px;
+}
+
+
+.modal-header {
+   background: black;
+   border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
+}
+
+.modal-title {
+   color: white;
+   border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
+}
+.modal-body {
+	background: black;
+}
+
+.row {
+	color: white;
+}
+
+.btn-default {
+
+}
+#chart_div {
+   margin-top: 20px;
+	width: 50%;
+	height: 300px;
+<<<<<<< HEAD
+}
+
+.forest {
+   background-image: url(beach.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+   height: 100%;
+}
+
+.form {
+   max-width: 50%;
+   text-align: center;
+   margin-right: auto;
+   margin-left: auto;
+   margin-top: 5%;
+   background-color: rgba(253,253,253, 0.5); 
+   border-radius: 25px;
+   padding: 10px;
+
+  
+
+}
+=======
+   float: right;
+   margin-right: 10%;
+}
+
+#panel {
+   top: 8px;
+   padding: 5px;
+   float:right;
+   width: 150px;
+   height: 300px;
+   padding: 10px;
+}
+
+html, body, #map-canvas { 
+  height: 80%;
+}
+
+#map-canvas {
+   width: 80%;
+   margin-left: 40px;
+}
+>>>>>>> master
