@@ -2,6 +2,7 @@
 <html>
   <head>
 
+    <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
     
     <table>
 
@@ -42,6 +43,7 @@
       p {
 
         color: #990099;
+
       }
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
@@ -63,7 +65,10 @@ var infowindows = [];
       var mapOptions = {
         zoom: 14,
         center: genAssembly,
-        mapTypeId: google.maps.MapTypeId.TERRAIN
+        mapTypeId: google.maps.MapTypeId.LANDSCAPE,
+        styles: [{"featureType":"all","stylers":[{"saturation":-100},{"gamma":0.5}]}]
+
+        // TERRAIN
       };
       map = new google.maps.Map(document.getElementById('map-canvas'),
           mapOptions);
@@ -216,8 +221,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
   <body class="background">
 
     <div class='run-log-index'>
-      <h1 style='color: white; margin-left: 15px; margin-bottom: 20px; '>Running Log</h1>
-
+      <div class="index-header">
+        <h1 style='color: white; margin-left: 15px; margin-bottom: 20px; '>Running Log</h1>
+      </div>  
         <ul class="list-group" style='float:right; margin-right: 20px; width: 200px;'>
           <% @journals.each do |show| %>
           <pre class="pre-scrollable" >

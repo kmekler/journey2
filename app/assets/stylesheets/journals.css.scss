@@ -1,7 +1,12 @@
 // Place all the styles related to the journals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import url(http://fonts.googleapis.com/css?family=Oxygen);
+
+$mainfont: 'Oxygen';
+
 .body-show-journal {
+   font-family: $mainfont;
    background-color:#000000;
    filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#000000, endColorstr=#4a4a4a);
    background-image:-moz-linear-gradient(bottom, #000000 100%, #4a4a4a 0%);
@@ -13,6 +18,7 @@
 }
 
 .show-journal-comment {
+   font-family: $mainfont;
    color: white;
    width: 350px;
    margin-top: 4%;
@@ -21,10 +27,19 @@
 }
 
 .body-show-title {
+   font-family: $mainfont;
    text-align: center;
+
+}
+
+.index-header {
+   font-family: $mainfont;
+   text-align: left;
+   margin-left: 50px;
 }
 
 .show-journal-button {
+   font-family: $mainfont;
    text-align: center;
    padding: 10px;
 }
@@ -43,12 +58,14 @@
 }
 
 .modal-header {
+   font-family: $mainfont;
    background: black;
    border-top-left-radius: 5px;
    border-top-right-radius: 5px;
 }
 
 .modal-title {
+   font-family: $mainfont;
    color: white;
    border-top-left-radius: 5px;
    border-top-right-radius: 5px;
@@ -104,6 +121,7 @@
 }
 
 .form {
+   font-family: $mainfont;
    max-width: 50%;
    text-align: center;
    margin-right: auto;
