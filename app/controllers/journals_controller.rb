@@ -1,8 +1,9 @@
 class JournalsController < ApplicationController
 skip_before_filter :authorize
 def index
-	# @markers = Marker.all
-	@markers = current_user.markers.all
+	@markers = Marker.all
+	# User.find(session[:current_user_id])
+	# @markers = current_user.markers.all
 	@journals = Journal.all
 
  end	

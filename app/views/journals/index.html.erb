@@ -10,22 +10,38 @@
 
     <title>Remove Markers</title>
     <style>
-      html, body, #map-canvas {
-        
-        height: 80%;
-        
+      html, body {
+        height: 100%;
+       
         margin: 0px;
-        padding: 0px
+        padding: 0px;
+
+      }
+      #map-canvas {
+        
+        height: 75%;
+        border-radius: 20px;
+       
+        margin: 50px 200px 0px 200px;
+        padding: 10px;
+        border: 10px solid #1e90ff;
+        
       }
       #panel {
         position: absolute;
-        top: 8px;
+        border-radius: 5px;
+        top: 70px;
         left: 50%;
         margin-left: -320px;
         z-index: 5;
-        background-color: #fff;
-        padding: 5px;
-        border: 1px solid #999;
+        background-color: #1e90ff;
+        
+        border: 6px solid #1e90ff;
+      }
+
+      p {
+
+        color: #990099;
       }
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
@@ -38,81 +54,83 @@ var map;
 var markers = [];
 var infowindows = [];
 
-function initialize() {
+    function initialize() {
 
 
-  geocoder = new google.maps.Geocoder();
-  var genAssembly = new google.maps.LatLng(34.012982, -118.495186);
-  var mapOptions = {
-    zoom: 12,
-    center: genAssembly,
-    mapTypeId: google.maps.MapTypeId.TERRAIN
-  };
-  map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
-
-
-
-  // This event listener will call addMarker() when the map is clicked.
-  google.maps.event.addListener(map, 'click', function(event) {
-    addMarker(event.latLng);
-  });
-
-  // Adds a marker at the center of the map.
-  addmarker = new google.maps.Marker({
-            position: genAssembly,
-            map: map
-   });
-
-  
-      var markers  = <%= @markers.to_json.html_safe %>;
+      geocoder = new google.maps.Geocoder();
       
-      console.log(markers);
+      var genAssembly = new google.maps.LatLng(34.012982, -118.495186);
+      var mapOptions = {
+        zoom: 14,
+        center: genAssembly,
+        mapTypeId: google.maps.MapTypeId.TERRAIN
+      };
+      map = new google.maps.Map(document.getElementById('map-canvas'),
+          mapOptions);
+
+
+
+      // This event listener will call addMarker() when the map is clicked.
+      google.maps.event.addListener(map, 'click', function(event) {
+        addMarker(event.latLng);
+      });
+
+      // Adds a marker at the center of the map.
+      addmarker = new google.maps.Marker({
+                position: genAssembly,
+                icon: 'images/gamarker.png',
+                map: map
+       });
+
+
+
       
-      for (var i = 0; i < markers.length; i++) {
-          //Add to marker
-          var marker = new google.maps.LatLng(markers[i].latitude,markers[i].longitude);
+          var markers  = <%= @markers.to_json.html_safe %>;
           
-         
-         
-          addmarker = new google.maps.Marker({
-            position: marker,
-            map: map
-          });
-      }
-    
-}
+          console.log(markers);
+          
+          for (var i = 0; i < markers.length; i++) {
+              //Add to marker
+              var marker = new google.maps.LatLng(markers[i].latitude,markers[i].longitude);
+              
+             
+             
+              var saveLocation = new google.maps.Marker({
+                position: marker,   
+                animation: google.maps.Animation.DROP,
+                icon: 'images/redmarker.png',
+                map: map
+              });
+
+            
+
+          }
+
+        
+    }
   
 // Add a marker to the map and push to the array.
 function addMarker(location) {
 
+
+
+
+
+
+    
+
+
       
   var newMarker = new google.maps.Marker({
     position: location,
+    icon: 'images/greenmarker.png',
+    
     map: map
   });
   // markers.push(marker);
 
-  var contentString = '<div id="content">'+
-      '<div id="siteNotice">'+
-      '</div>'+
-      '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
-      '<div id="bodyContent">'+
-      '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-      'sandstone rock formation in the southern part of the '+
-      'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-      'south west of the nearest large town, Alice Springs; 450&#160;km '+
-      '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-      'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-      'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-      'Aboriginal people of the area. It has many springs, waterholes, '+
-      'rock caves and ancient paintings. Uluru is listed as a World '+
-      'Heritage Site.</p>'+
-      '<p>Attribution: Uluru, <a href="http://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-      'http://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-      '(last visited June 22, 2009).</p>'+
-      '</div>'+
-      '</div>';
+  var contentString = '<a href="/journals/new">'+
+      'Log new run!</a>';
 
   var infowindow = new google.maps.InfoWindow({
       content: contentString
@@ -121,7 +139,7 @@ function addMarker(location) {
   google.maps.event.addListener(newMarker, 'click', function() {
         infowindow.open(map,newMarker);
       }); 
-  // console.log(markers);
+  console.log(markers);
  
   $(document).ready(function(){
         $("#newMarker_field").val(markers);
@@ -129,7 +147,7 @@ function addMarker(location) {
 
   });
 
-  // make an api call to your server and send markers back
+  //make an api call to your server and send markers back
   $.post("/markers", {lat: newMarker.position.lat(), lng: newMarker.position.lng()},
      function(data){
       if (newMarker > 1)
@@ -161,8 +179,13 @@ function showMarkers() {
 // Deletes all markers in the array by removing references to them.
 function deleteMarkers() {
   clearMarkers();
+
   markers = [];
 }
+
+
+
+
 
 function codeAddress(){
   var address = document.getElementById('address').value;
@@ -184,7 +207,10 @@ function codeAddress(){
 
   }
 
+
+
 }
+
 
 
 google.maps.event.addDomListener(window, 'load', initialize);
@@ -194,28 +220,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
     
 
 
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-
-      var data = google.visualization.arrayToDataTable([
-        ['Date', 'Mood', 'Weather', 'Food'],
-        ['11/23/2014', 4, 2, 9]
-      ]);
-
-      var options = {
-        title: 'Run Performance',
-        hAxis: {title: 'Date', titleTextStyle: {color: 'red'}}
-      };
-
-      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }
-
-
-    </script>
     
   </head>
   <body class="background">
@@ -223,6 +227,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
     
 
     <div id="map-canvas"></div>
+
 
 
 
@@ -234,63 +239,27 @@ google.maps.event.addDomListener(window, 'load', initialize);
       <input onclick="deleteMarkers();" type=button value="Delete Markers">
 
     </div>
-    
 
 
-    <p>Click on the map to add markers.</p>
+    <center><p>Click on the map to add markers.</p></center>
+   
 
-
-
-
-    <%=link_to 'send back', journal_path(:id=>"marker_field") %>
-    
-    
-    
+  
 
     
-	<div class="body">
-		<div class="text">
-				<center><h2 class="heading"> JESUS CHRIST, RUN ALREADY </h2><br></center>		
+<div class="logs">
+  <br>
+  <br>
 
-					<% @journals.each do |journal| %>
-					<center><p class="hover"><%= journal.weather %></p><center>
-					<center><p><%= link_to 'See more', journal_path(journal) %></p></center>
-				<% end %>
-				
-		</div>
-	</div>	
-
-  <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" style="width:900px; background-color:black;">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Your Day</h4>
+    
+    <% @journals.each do |show| %>
+          <center><p class="hover"><%= show.comment %></p><center>
+          <center><p><%= link_to 'Run details', journal_path(show) %></p></center>
+        <% end %>
       </div>
-      <div class="modal-body">
-        
-      <div class="row">
-        <div class="col-md-6"><h1>Journal Entry</h1>
-          <p>I felt really strong today. Had a light breakfast and a clif bar about 30 minutes before my run. I clocked about 5 miles at a 6:45 mile pace. I did not feel tired after the run and my legs felt well rested.</p>
-        </div>
-        <div class="col-md-6">
-          <div id="chart_div"></div>
-        </div>
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+
+
+
 
   </body>
 </html>

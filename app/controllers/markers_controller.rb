@@ -10,3 +10,9 @@ class MarkersController < ApplicationController
 		render json: {info: "hells to the yeah"}
 	end
 end
+
+	def destroy
+		@markers = Marker.find(params[:id])
+		@markers.destroy
+		redirect_to journals_path
+	end
