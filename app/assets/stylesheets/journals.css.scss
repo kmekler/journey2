@@ -23,6 +23,18 @@
 }
 
 
+.logs {
+
+ background-color:#000000;
+ filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#000000, endColorstr=#4a4a4a);
+ background-image:-moz-linear-gradient(bottom, #000000 100%, #4a4a4a 0%);
+ background-image:-webkit-linear-gradient(bottom, #000000 100%, #4a4a4a 0%);
+ background-image:-ms-linear-gradient(bottom, #000000 100%, #4a4a4a 0%);
+ background-image:linear-gradient(bottom, #000000 100%, #4a4a4a 0%);
+ background-image:-o-linear-gradient(bottom, #000000 100%, #4a4a4a 0%);
+ background-image:-webkit-gradient(linear, left bottom, left top, color-stop(100%,#000000), color-stop(0%,#4a4a4a));
+}
+
 .modal-header {
    background: black;
    border-top-left-radius: 5px;

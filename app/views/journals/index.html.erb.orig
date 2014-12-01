@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
-
-    
-    <table>
-
-
-      </table>
-
-    <title>Remove Markers</title>
+  <head>    
     <style>
       html, body {
         height: 100%;
@@ -19,6 +11,11 @@
       }
       #map-canvas {
         
+<<<<<<< HEAD
+        height: 80%;
+        margin: 0px;
+        padding: 0px;
+=======
         height: 75%;
         border-radius: 20px;
        
@@ -42,10 +39,58 @@
       p {
 
         color: #990099;
+>>>>>>> jackie
       }
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script>
+<<<<<<< HEAD
+    
+    // In the following example, markers appear when the user clicks on the map.
+    // The markers are stored in an array.
+    // The user can then click an option to hide, show or delete the markers.
+    var geocoder;
+    var map;
+    var markers = [];
+    var infowindows = [];
+
+    function initialize() {
+
+    geocoder = new google.maps.Geocoder();
+    var genAssembly = new google.maps.LatLng(34.012982, -118.495186);
+    var mapOptions = {
+      zoom: 12,
+      center: genAssembly,
+      mapTypeId: google.maps.MapTypeId.TERRAIN
+    };
+    map = new google.maps.Map(document.getElementById('map-canvas'),
+        mapOptions);
+
+    // This event listener will call addMarker() when the map is clicked.
+    google.maps.event.addListener(map, 'click', function(event) {
+      addMarker(event.latLng);
+    });
+
+    // Adds a marker at the center of the map.
+    addmarker = new google.maps.Marker({
+              position: genAssembly,
+              map: map
+     });
+  
+    var markers  = <%= @markers.to_json.html_safe %>;
+    
+    console.log(markers);
+    
+    for (var i = 0; i < markers.length; i++) {
+        //Add to marker
+        var marker = new google.maps.LatLng(markers[i].latitude,markers[i].longitude);
+        addmarker = new google.maps.Marker({
+          position: marker,
+          map: map
+        });
+    }   
+}
+=======
 // In the following example, markers appear when the user clicks on the map.
 // The markers are stored in an array.
 // The user can then click an option to hide, show or delete the markers.
@@ -108,6 +153,7 @@ var infowindows = [];
 
         
     }
+>>>>>>> jackie
   
 // Add a marker to the map and push to the array.
 function addMarker(location) {
@@ -157,6 +203,7 @@ function addMarker(location) {
 
  
 }
+
 
 
 // Sets the map on all markers in the array.
@@ -217,17 +264,61 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
     </script>
 
+<<<<<<< HEAD
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+      var data = google.visualization.arrayToDataTable([
+        ['Date', 'Mood', 'Weather', 'Food'],
+        ['11/23/2014', 4, 2, 9]
+      ]);
+
+      var options = {
+        title: 'Run Performance',
+        hAxis: {title: 'Date', titleTextStyle: {color: 'red'}}
+      };
+
+      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+
+
+    </script>
+=======
     
 
 
+>>>>>>> jackie
     
   </head>
   <body class="background">
-
+    <h1>Running Locations</h1>
+    <div id="panel">
+      <button onclick="clearMarkers();" value="Hide Markers" >Clear Markers</button><br>
+      <button onclick="showMarkers();" value="Show All Markers">Show Markers</button><br>
+      <button onclick="deleteMarkers();" value="Delete Markers">Delete Markers</button><br>
+    </div>  
     
-
+    <!-- google map div ID -->
     <div id="map-canvas"></div>
 
+<<<<<<< HEAD
+    
+    <%=link_to 'send back', journal_path(:id=>"marker_field") %>
+    
+	<div class="body">
+		<div class="text">
+
+			<% @journals.each do |journal| %>
+				<center><p><%= link_to 'see more', journal_path(journal) %></p></center>
+			<% end %>
+		</div>
+	</div>	
+=======
 
 
 
@@ -260,6 +351,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 
 
+>>>>>>> jackie
 
   </body>
 </html>

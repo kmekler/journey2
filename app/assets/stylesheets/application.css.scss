@@ -13,3 +13,22 @@
  */
  @import "bootstrap-sprockets";
  @import 'bootstrap';
+
+ // nav {
+ // 	opacity: 0.4;
+ //    filter: alpha(opacity=40);
+ // }
+
+body, html {
+
+
+ background-color:#000000;
+ filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#000000, endColorstr=#4a4a4a);
+ background-image:-moz-linear-gradient(bottom, #000000 0%, #4a4a4a 100%);
+ background-image:-webkit-linear-gradient(bottom, #000000 0%, #4a4a4a 100%);
+ background-image:-ms-linear-gradient(bottom, #000000 0%, #4a4a4a 100%);
+ background-image:linear-gradient(bottom, #000000 0%, #4a4a4a 100%);
+ background-image:-o-linear-gradient(bottom, #000000 0%, #4a4a4a 100%);
+ background-image:-webkit-gradient(linear, left bottom, left top, color-stop(0%,#000000), color-stop(100%,#4a4a4a));
+
+}
