@@ -5,17 +5,17 @@
 			<%= form_for @journal do |f| %>
 				<div class="form-group">
 					<%= f.label :weather %> 
-					  <%= f.select(:weather, options_for_select([['horrible', 1], ['poor', 2], ['mediocre', 3], ['good', 4], ['great', 5]]), {}, {class: "form-control"}) %>
+					  <%= f.select(:weather, options_for_select([['great', 5], ['good', 4], ['mediocre', 3], ['poor', 2], ['horrible', 1]]), {}, {class: "form-control"}) %>
 				</div>
 				<br>
 				<div class="form-group">
 					<%= f.label :food %> 
-					  <%= f.select(:food, options_for_select([['horrible', 1], ['poor', 2], ['mediocre', 3], ['good', 4], ['great', 5]]), {}, {class: "form-control"}) %>
+					  <%= f.select(:food, options_for_select([['great', 5], ['good', 4], ['mediocre', 3], ['poor', 2], ['horrible', 1]]), {}, {class: "form-control"}) %>
 				</div>
 				<br>
 				<div class="form-group">
 					<%= f.label :mood %> 
-					  <%= f.select(:mood, options_for_select([['horrible', 1], ['poor', 2], ['mediocre', 3], ['good', 4], ['great', 5]]), {}, {class: "form-control"}) %>
+					  <%= f.select(:mood, options_for_select([['great', 5], ['good', 4], ['mediocre', 3], ['poor', 2], ['horrible', 1]]), {}, {class: "form-control"}) %>
 				</div>
 				<br>
 				<strong>Comment</strong>
