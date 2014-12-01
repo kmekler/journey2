@@ -15,14 +15,15 @@
        
         margin: 0px;
         padding: 0px;
-
       }
+      
       #map-canvas {
         
-        height: 75%;
+        height: 400px;
         border-radius: 20px;
+        width: 1000px;
        
-        margin: 50px 200px 0px 200px;
+        
         padding: 10px;
         border: 10px solid #1e90ff;
         
@@ -35,7 +36,6 @@
         margin-left: -320px;
         z-index: 5;
         background-color: #1e90ff;
-        
         border: 6px solid #1e90ff;
       }
 
@@ -183,10 +183,6 @@ function deleteMarkers() {
   markers = [];
 }
 
-
-
-
-
 function codeAddress(){
   var address = document.getElementById('address').value;
   if(address.length > 0){
@@ -206,12 +202,7 @@ function codeAddress(){
     alert("Search field can't be blank");
 
   }
-
-
-
 }
-
-
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -224,59 +215,24 @@ google.maps.event.addDomListener(window, 'load', initialize);
   </head>
   <body class="background">
 
-    
+    <div class='run-log-index'>
+      <h1 style='color: white; margin-left: 15px; margin-bottom: 20px; '>Running Log</h1>
 
-    <div id="map-canvas"></div>
+        <ul class="list-group" style='float:right; margin-right: 20px; width: 200px;'>
+          <% @journals.each do |show| %>
+          <pre class="pre-scrollable" >
+         
+            <li class="list-group-item"><%= link_to 'Run details', journal_path(show) %></li>
+            <li class="list-group-item"><%= link_to 'Run details', journal_path(show) %></li>
+            <li class="list-group-item"><%= link_to 'Run details', journal_path(show) %></li>
+             <li class="list-group-item"><%= link_to 'Run details', journal_path(show) %></li>
+            <li class="list-group-item"><%= link_to 'Run details', journal_path(show) %></li>
+            <li class="list-group-item"><%= link_to 'Run details', journal_path(show) %></li>
 
-
-
-
-    <div id="panel">
-      <input id="address" type="textbox" value="General Assembly, Santa Monica, CA">
-      <input type="button" value="Search by Location" onclick="codeAddress()">
-      <input onclick="clearMarkers();" type=button value="Hide Markers">
-      <input onclick="showMarkers();" type=button value="Show All Markers">
-      <input onclick="deleteMarkers();" type=button value="Delete Markers">
-
-    </div>
-
-       <ul class="list-group" style='float:right;'>
-        <% @journals.each do |show| %>
-        <pre class="pre-scrollable">
-       
-          <li class="list-group-item"><%= link_to 'Run details', journal_path(show) %></li>
-          <li class="list-group-item"><%= link_to 'Run details', journal_path(show) %></li>
-          <li class="list-group-item"><%= link_to 'Run details', journal_path(show) %></li>
-           <li class="list-group-item"><%= link_to 'Run details', journal_path(show) %></li>
-          <li class="list-group-item"><%= link_to 'Run details', journal_path(show) %></li>
-          <li class="list-group-item"><%= link_to 'Run details', journal_path(show) %></li>
-
-          <% end %>
-        </pre>
-      </ul>
-
-
-    <center><p>Click on the map to add markers.</p></center>
-   
-
-  
-
-    
-
-  <!--  <table id="logs" class="table table-striped">
-
-    
-    <% @journals.each do |show| %>
-    <tr>
-          <td class="hover"><%= show.comment %></td>
-          <td><%= link_to 'Run details', journal_path(show) %></td>
-        <% end %>
-      </tr>
-      </table> -->
-     
-
-
-
-
+            <% end %>
+          </pre>
+        </ul>
+        <div id='map-canvas'></div>
+      </div>
   </body>
 </html>
