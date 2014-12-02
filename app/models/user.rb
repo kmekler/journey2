@@ -8,4 +8,6 @@
 
   has_many :markers
 
+  has_many :journals
+
 end

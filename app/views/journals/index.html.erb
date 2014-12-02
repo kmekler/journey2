@@ -225,17 +225,16 @@ google.maps.event.addDomListener(window, 'load', initialize);
       <div class="index-header">
         <h1 style='color: white; margin-left: 15px; margin-bottom: 20px; '>Running Log</h1>
       </div>  
-        <ul class="list-group" style='float:right; margin-right: 20px; width: 200px;'>
-          <% @journals.each do |show| %>
-          <pre class="pre-scrollable" >
-         
-            <li class="list-group-item"><%= link_to 'Run details', journal_path(show) %></li>
-            <li class="list-group-item"><%= link_to 'Run details', journal_path(show) %></li>
-            <li class="list-group-item"><%= link_to 'Run details', journal_path(show) %></li>
-             <li class="list-group-item"><%= link_to 'Run details', journal_path(show) %></li>
-            <li class="list-group-item"><%= link_to 'Run details', journal_path(show) %></li>
-            <li class="list-group-item"><%= link_to 'Run details', journal_path(show) %></li>
+        
+        <%#= f.label :date, @dates, :created_at, :created_at %>
 
+        
+        <ul class="list-group" style='float:right; margin-right: 20px; width: 200px;'>
+          <pre class="pre-scrollable" >
+          <% @journals.each do |show| %>
+            
+            <li class="list-group-item"><%= link_to show.created_at.strftime("%m/%d/%Y"), journal_path(show) %></li>
+           
             <% end %>
           </pre>
         </ul>
