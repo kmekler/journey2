@@ -10,12 +10,12 @@
 
 	var data = google.visualization.arrayToDataTable([
 	    ['Date', 'Mood', 'Weather', 'Food'],
-	    ['11/23/2014', <%= @journal.weather %>, <%= @journal.food %> , <%= @journal.mood %>],
+	    [<%= @journal.created_at.strftime("") %>, <%= @journal.weather %>, <%= @journal.food %> , <%= @journal.mood %>],
 	]);
 
     var options = {
 	    title: 'Run Performance',
-	    hAxis: {title: 'Year', titleTextStyle: {color: 'red'}}
+	    hAxis: {title: 'Today', titleTextStyle: {color: 'red'}}
 	};
 
 	var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
@@ -37,7 +37,7 @@
 		<%= @journal.comment %>
 		<br><br>
 		<h1 style="font-size: 25px">Run Date:</h1>
-		<p>11/23/2014</p>
+		<p><%= @journal.created_at.strftime("%m/%d/%Y") %></p>
 	</div>
 
 

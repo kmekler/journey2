@@ -233,7 +233,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
           <pre class="pre-scrollable" >
           <% @journals.each do |show| %>
             
-            <li class="list-group-item"><%= link_to show.created_at.strftime("%m/%d/%Y"), journal_path(show) %></li>
+            <li class="list-group-item"><%= link_to show.created_at.strftime("%m/%d/%Y"), journal_path(show)%></li>
            
             <% end %>
           </pre>
