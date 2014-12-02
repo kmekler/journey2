@@ -8,6 +8,12 @@ resources :users
 resources :markers
 
 root 'users#index'
+
+scope 'api', defaults: {format: :json} do
+  get 'markers' => 'api#index', as: :api_markers
+  get 'marker/:id' => 'api#show', as: :api_marker
+
+ end
 end
 
   # The priority is based upon order of creation: first created -> highest priority.

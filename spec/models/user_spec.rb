@@ -14,4 +14,9 @@ describe User do
       expect(user.password_digest).to_not be_nil
     end
 
+    it { should have_many(:markers) }
+    it { should have_many(:journals) }
+   
 end
+
+
