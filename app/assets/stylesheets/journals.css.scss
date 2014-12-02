@@ -7,6 +7,9 @@
 // $mainfont: 'Oxygen';
 $mainfont: 'Quicksand';
 
+style {
+   font-family: $mainfont;
+}
 
 .body-show-journal {
    font-family: $mainfont;
