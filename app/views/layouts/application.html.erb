@@ -30,7 +30,6 @@
 
         <ul class="nav navbar-nav navbar-right">
             <% if current_user %>
-        Logged in as <%= current_user.email %>
           <li><button type="button" class="btn btn-default navbar-btn"><a href="#"><%= link_to "Log Out", logout_path %></a></button></li>
       <% else %>
           <li><button type="button" class="btn btn-default navbar-btn"><a href="#"><%= link_to "Log In", new_session_path %></a></button></li>
