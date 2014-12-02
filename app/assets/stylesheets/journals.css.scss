@@ -2,8 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import url(http://fonts.googleapis.com/css?family=Oxygen);
+@import url(http://fonts.googleapis.com/css?family=Quicksand);
 
-$mainfont: 'Oxygen';
+// $mainfont: 'Oxygen';
+$mainfont: 'Quicksand';
+
 
 .body-show-journal {
    font-family: $mainfont;
@@ -34,6 +37,7 @@ $mainfont: 'Oxygen';
 
 .index-header {
    font-family: $mainfont;
+   color: #8b8a8b;
    text-align: left;
    margin-left: 50px;
 }
@@ -91,7 +95,7 @@ $mainfont: 'Oxygen';
 
 .pre-scrollable {
    max-height: 400px;
-   border: 10px solid #1e90ff;
+   border: 10px solid #8b8a8b;
    border-radius: 5px;
 }
 
