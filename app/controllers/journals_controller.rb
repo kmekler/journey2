@@ -2,8 +2,8 @@ class JournalsController < ApplicationController
 skip_before_filter :authorize
 def index
 	@markers = Marker.all
-	# User.find(session[:current_user_id])
-	# @markers = current_user.markers.all
+	User.find(session[:current_user_id])
+	@markers = current_user.markers.all
 	@journals = Journal.all
 	# @dates = Journal.find_by_sql("SELECT DISTINCT CAST(created_at AS DATE) FROM journals WHERE user_id = "+current_user.id.to_s+" order by 1;")
 
